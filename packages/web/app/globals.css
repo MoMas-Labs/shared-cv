@@ -1,15 +1,107 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  direction: rtl;
+  font-weight: 300;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-640px);
+    }
+  }
+
+  --animate-marquee: marquee 20s linear infinite;
+}
+
+@theme {
+  --color-primary-50: #d9dce2;
+  --color-primary-100: #b3bac6;
+  --color-primary-200: #9ba3b3;
+  --color-primary-300: #848ea1;
+  --color-primary-400: #6d798e;
+  --color-primary-500: #57647d;
+  --color-primary-600: #42506b;
+  --color-primary-700: #2e3d5a;
+  --color-primary-800: #1b2a49;
+  --color-primary-900: #16233e;
+  --color-primary-1000: #111c34;
+  --color-primary-1100: #0f192f;
+  --color-primary-11200: #050a17;
+
+  --color-secondary-50: #f0edf8;
+  --color-secondary-100: #e2dbf0;
+  --color-secondary-200: #d3c9e9;
+  --color-secondary-300: #c5b7e1;
+  --color-secondary-400: #b6a4da;
+  --color-secondary-500: #a892d3;
+  --color-secondary-600: #8b6ec4;
+  --color-secondary-700: #6e4ab5;
+  --color-secondary-800: #5b3e96;
+  --color-secondary-900: #4d347f;
+  --color-secondary-1000: #422c6d;
+  --color-secondary-1100: #37255b;
+  --color-secondary-11200: #2c1e48;
+
+  --color-neutral-50: #dfdfdf;
+  --color-neutral-100: #dbdbdb;
+  --color-neutral-200: #cbcbcb;
+  --color-neutral-300: #bcbcbc;
+  --color-neutral-400: #a1a1a1;
+  --color-neutral-500: #868686;
+  --color-neutral-600: #6c6c6c;
+  --color-neutral-700: #5f5f5f;
+  --color-neutral-800: #535353;
+  --color-neutral-900: #474747;
+  --color-neutral-1000: #3b3b3b;
+  --color-neutral-1100: #1b1b1b;
+  --color-neutral-11200: #111111;
+
+  --color-accent-50: #e2e0eb;
+  --color-accent-100: #d3d0e2;
+  --color-accent-200: #b6b1ce;
+  --color-accent-300: #a8a1c4;
+  --color-accent-400: #9991ba;
+  --color-accent-500: #8b82b0;
+  --color-accent-600: #6e629d;
+  --color-accent-700: #584f7d;
+  --color-accent-800: #484067;
+  --color-accent-900: #423b5e;
+  --color-accent-1000: #37314e;
+  --color-accent-1100: #2c273f;
+  --color-accent-11200: #211d2f;
+
+  --color-background: #f5f5f5;
+
+  --color-skeleton: #d9d9d9;
+
+  /* Border Radius */
+  --radius-default: 16px;
+
+  /* Shadows */
+  --shadow-e1: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  --shadow-e2: 0px 5px 20px 2px rgba(37, 51, 141, 0.1);
+  --shadow-e3: 0px 3px 10px rgba(0, 0, 0, 0.15);
+  --shadow-e4: 4px 4px 14px 2px rgba(157, 178, 206, 0.15);
+
+  /* Screens (media queries as custom properties) */
+  --screen-lg: (min-device-width: 1024px);
+  --screen-max-lg: (max-device-width: 1023px);
+  --screen-breakPoint: (min-width: 1200px);
+  --screen-max-breakPoint: (max-width: 1199px);
+  --screen-max-sm: (max-width: 639px);
+  --screen-max-md: (max-width: 767px);
+  --screen-max-xl: (max-width: 1279px);
+  --screen-max-2xl: (max-width: 1535px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +112,25 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background;
+}
+
+.main {
+  @apply px-2;
+}
+
+.container {
+  @apply pt-4 px-6 max-w-[1680px] flex flex-col;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.ltr {
+  direction: ltr !important;
+}
+
+.rtl {
+  direction: rtl !important;
 }
